@@ -6,7 +6,7 @@ import matplotlib
 from scipy.stats import weibull_min
 
 matplotlib.use("QtAgg")
-matplotlib.rcParams['toolbar'] = 'None'
+#matplotlib.rcParams['toolbar'] = 'None'
 
 FORVENTET_LEVETID = 65
 SIGMA = 20
