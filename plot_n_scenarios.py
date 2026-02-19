@@ -1,5 +1,5 @@
 #-*- coding: utf-8 -*-
-from pandas import read_excel, to_numeric, DataFrame
+from pandas import read_excel, to_numeric, DataFrame, Series
 from numpy import random, argmax
 import matplotlib.pyplot as plt
 import matplotlib
@@ -35,7 +35,7 @@ def read_årstall_store_kraftverk():
     return df_filtered["DatoForEldsteKraftproduserendeDel"]
 
 
-def simuler(årstall_store_kraftverk):
+def simuler(årstall_store_kraftverk: Series):
     variasjon = random.normal(loc=0, scale=SIGMA, size=len(årstall_store_kraftverk))
 
     årstall_utskifting_trafo = årstall_store_kraftverk + FORVENTET_LEVETID + variasjon.astype(int)
@@ -75,7 +75,6 @@ def plot(df: DataFrame, title: str, window_title: str, color: str, x: int, y: in
     plt.ylabel("Antall")
     plt.ylim(0, 45)
 
-    #plt.title(title)
     fig.text(0.5, 0.92, f"{title}", ha="center", fontsize=11)
     if (sim):
         fig.text(0.5, 0.89, f"(μ={FORVENTET_LEVETID}, σ={SIGMA})", ha="center", fontsize=6)
